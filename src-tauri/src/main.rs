@@ -36,7 +36,7 @@ struct Choice {
 }
 
 async fn call_gpt_api(prompt: &str) -> Result<String, reqwest::Error> {
-    let api_key = "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";
+    let api_key = "xxxx";
 
     let client = Client::new();
     let prompt = Prompt {
