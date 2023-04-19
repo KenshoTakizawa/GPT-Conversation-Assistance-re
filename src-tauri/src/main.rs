@@ -11,10 +11,22 @@ struct DataToSend {
     prompt: String,
 }
 
-// #[derive(Serialize, Deserialize)]
-// struct ResponseData {
-// 応答データのフィールドを定義します。
-// }
+#[derive(Serialize, Deserialize)]
+struct ApiResponse {
+    id: String,
+    object: String,
+    created: u64,
+    model: String,
+    choices: Vec<Choice>,
+}
+
+#[derive(Serialize, Deserialize)]
+struct Choice {
+    text: String,
+    index: usize,
+    logprobs: Option<serde_json::Value>,
+    finish_reason: String,
+}
 
 async fn post_data(url: &str, data: DataToSend) -> Result<Value, reqwest::Error> {
     let client = Client::new();
